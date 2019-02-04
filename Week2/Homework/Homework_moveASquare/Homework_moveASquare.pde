@@ -1,13 +1,16 @@
-float xPos, yDirec;
-float speed;
+float xPos, yPos, yDirec;
+float speed = 2;
 boolean rightPress = false;
 boolean leftPress = false;
 boolean upPress = false;
 boolean downPress = false;
+float angle = 0;
 
 void setup(){
   size(800, 600);
   noStroke();
+  rectMode(CENTER);
+  
 }
 
 void draw(){
@@ -15,13 +18,18 @@ void draw(){
   
   //car moving forward
   xPos = xPos + .3;
+  yPos = 70;
+  //pushMatrix();
+  //rotate(radians(angle));
+  car(xPos, yPos);
+  //popMatrix();
   
-  car(xPos, 70);
+  rightButton(210 + 65/2, 500 + 65/2, 65);
+  leftButton(50 + 65/2, 500 + 65/2, 65);
+  upButton(130 + 65/2, 420 + 65/2, 65);
+  downButton(130 + 65/2, 500 + 65/2, 65);
   
-  rightButton(210, 500, 65);
-  leftButton(50, 500, 65);
-  upButton(130, 420, 65);
-  downButton(130, 500, 65);
+  angle += 1;
   
 }
 
@@ -32,6 +40,8 @@ void mousePressed(){
   }
   if(rightPress){
     //rotate square bit by bit
+  rotate(radians(angle));
+  car(xPos, 70);
   }
   
   //rotate left
@@ -40,6 +50,10 @@ void mousePressed(){
   }
   if(rightPress){
     //rotate square bit by bit
+    pushMatrix();
+  rotate(radians(angle));
+  car(xPos, yPos);
+  popMatrix();
   }
   
   //Accelerate forward
@@ -48,6 +62,8 @@ void mousePressed(){
   }
   if(rightPress){
     //move forward
+    speed = speed * speed ;
+    xPos += speed;
   }
   
   //move backwards

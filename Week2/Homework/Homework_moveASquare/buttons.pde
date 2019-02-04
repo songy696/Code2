@@ -1,3 +1,4 @@
+//
 void rightButton(float rightButtonX, float rightButtonY, float rightButtonZ){
   //hightlights
   if (mouseX > rightButtonX && 
@@ -18,8 +19,8 @@ void rightButton(float rightButtonX, float rightButtonY, float rightButtonZ){
    fill(0);
    strokeWeight(5);
    stroke(100);
-   line(rightButtonX + 33, rightButtonY + 10, rightButtonX + 55, rightButtonY + 32);
-   line(rightButtonX + 55, rightButtonY + 32, rightButtonX + 33, rightButtonY + 55);
+   line(rightButtonX, rightButtonY -25, rightButtonX + 25, rightButtonY);
+   line(rightButtonX + 25, rightButtonY, rightButtonX, rightButtonY + 25);
 }
 
 void leftButton(float leftButtonX, float leftButtonY, float leftButtonZ){
@@ -39,8 +40,8 @@ void leftButton(float leftButtonX, float leftButtonY, float leftButtonZ){
    
    fill(0);
    stroke(100);
-   line(leftButtonX + 33, leftButtonY + 10, leftButtonX + 10, leftButtonY + 32);
-   line(leftButtonX + 10, leftButtonY + 32, leftButtonX + 33, leftButtonY + 55);
+   line(leftButtonX, leftButtonY -25, leftButtonX - 25, leftButtonY);
+   line(leftButtonX - 25, leftButtonY, leftButtonX, leftButtonY + 25);
 }
 
 void upButton(float upButtonX, float upButtonY, float upButtonZ){
@@ -60,8 +61,8 @@ void upButton(float upButtonX, float upButtonY, float upButtonZ){
    
    fill(0);
    stroke(100);
-   line(upButtonX + 10, upButtonY + 32, upButtonX + 33, upButtonY + 10);
-   line(upButtonX + 33, upButtonY + 10, upButtonX + 55, upButtonY + 32);
+   line(upButtonX -25, upButtonY, upButtonX, upButtonY -25);
+   line(upButtonX, upButtonY - 25, upButtonX + 25, upButtonY);
 }
 
 void downButton(float downButtonX, float downButtonY, float downButtonZ){
@@ -81,6 +82,6 @@ void downButton(float downButtonX, float downButtonY, float downButtonZ){
    
    fill(0);
    stroke(100);
-   line(downButtonX + 10, downButtonY + 32, downButtonX + 34, downButtonY + 55);
-   line(downButtonX + 34, downButtonY + 55, downButtonX + 55, downButtonY + 32);
+   line(downButtonX -25, downButtonY, downButtonX, downButtonY + 25);
+   line(downButtonX, downButtonY + 25, downButtonX + 25, downButtonY);
 }
