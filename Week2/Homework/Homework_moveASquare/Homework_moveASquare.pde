@@ -1,3 +1,8 @@
+//there is a weird separation of car when I press the right and left buttons
+// the acceleration button does not function
+// the road disappear when I press right and left buttons
+
+
 float xPos, yPos, Direc;
 float speed = 1;
 boolean rightPress = false;
