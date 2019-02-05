@@ -17,6 +17,7 @@ void setup(){
 
 void draw(){
   background(95, 158, 160);
+  road();
   car();
   Direc = sqrt(xPos*xPos + yPos*yPos); //I thought this calculation will figure out the direction of the car
   
