@@ -46,18 +46,16 @@ class Particle{
     this.velX = 0;
     this.velY = random(3, 10);
     life = 50;
-    alpha = 255;
     colorChange = 255;
   }
   
   void display(){
-    noStroke();
-    fill(10, map(life, 50, 20, 70, 50), 200, map(life, 50, 0, 230, 0));
-    ellipse(this.posX, this.posY, life,life);
+    stroke(0, 100,250, map(this.velY, 0 , 10, 255, 150));
+    fill(255, map(life, 50, 20, 70, 230), 30, map(life, 50, 0, 230, 0));
+    line(this.posX, this.posY-50, this.posX, this.posY);
   }
   
   void update(){
-      alpha-=5;
     life--;
     colorChange = colorChange - 50;
     this.posX += this.velX;
@@ -91,11 +89,11 @@ class Generator {
      
     } 
 
-    for (int i = particles.size() - 1; i >= 0; i--) {
-      Particle p = particles.get(i);
-      if (p.life < 0) {
-        particles.remove(i);
-      }
-    }
+    //for (int i = particles.size() - 1; i >= 0; i--) {
+    //  Particle p = particles.get(i);
+    //  if (p.life < 0) {
+    //    particles.remove(i);
+    //  }
+   // }
   }
 }
