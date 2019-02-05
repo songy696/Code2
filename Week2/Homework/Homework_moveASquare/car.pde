@@ -1,5 +1,5 @@
 
-void car(float xPos, float yPos){
+void car(){
   noStroke();
   //car body
   fill(255, 0, 0);
