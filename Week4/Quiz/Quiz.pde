@@ -4,9 +4,14 @@
 int arrayLength = 200;
 Buttons[] b = new Buttons[arrayLength];
 
-boolean overButton = false;
+boolean locked = false;
 int click;
 
+float xOffset = 0; 
+float yOffset = 0; 
+
+float bx;
+float by;
 
 void setup(){
   size(600, 600);
@@ -15,8 +20,7 @@ void setup(){
   
   click = 1;
   
-   //b = new Buttons(width/2, height/2, 100);
-  //b = new Buttons(width/2, height/2, 100);
+   //bx = new Buttons(width/2, height/2, 100);
   
   for (int i = 0; i < arrayLength; i++){
     b[i] = new Buttons(i % 7*width/6, i/7 * height/6, int(random(50,100)));
@@ -33,7 +37,7 @@ void draw(){
   
 }
 
-void mouseClicked(){
+void mousePressed(){
   for (int i = 0; i < arrayLength; i++){
     if(b[i].MouseIsOver()){
       b[i].pallete();
@@ -42,4 +46,18 @@ void mouseClicked(){
       click = 1;
     }
   }
+  
+  xOffset = mouseX - bx; 
+  yOffset = mouseY - by; 
+}
+
+void mouseDragged() {
+  if(locked) {
+    bx = mouseX-xOffset; 
+    by = mouseY-yOffset; 
+  }
+}
+
+void mouseReleased() {
+  locked = false;
 }
