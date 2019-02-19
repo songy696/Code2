@@ -1,12 +1,25 @@
-//ArrayList<Buttons> cirlces = new ArrayList<Buttons>();
-float xC, yC, xR, yR, xR1,yR1;
-int sC, sR;
+//https://processing.org/examples/mousefunctions.html
+//https://processing.org/examples/simpleparticlesystem.html
+
+//tried to drag the pink sqaure from the 2nd scene
+// once the pink square is over the bigger square, it will generate the firework.
+
+float xC, yC, xR, yR, xR1,yR1, xR2, yR2;
+int sC, sR, sR1;
+
 Buttons rButton;
 Buttons cButton;
 ParticleSystem ps;
+
 boolean circleClicked, rectClicked;
+boolean locked = false;
+boolean overBox = false;
+
 float d = dist(mouseX, mouseY, xC, yC);
 color bgColor = color(220, 0, 220);
+
+float xOffset = 0.0; 
+float yOffset = 0.0; 
 
 void setup(){
   size(800, 800);
@@ -18,6 +31,9 @@ void setup(){
   sR = 100;
   xR1 = width/2;
   yR1 = height /4;
+  xR2 = width /2;
+  yR2 = height*3/4;
+  sR1 = 200;
   circleClicked = false;
   rectClicked = false;
   ps = new ParticleSystem(new PVector(width/2, height/2), random(RGB));
@@ -34,15 +50,26 @@ void draw(){
   }
   
   if(rectClicked){
-    background(255,0,255);
-    ps.addParticle();
-    ps.run();
-    
+    background(0);
+    fill(200, 20 ,200);
     rButton = new Buttons(0, 0, 0, xR1, yR1, sR);
     rButton.display();
+    fill(220,100,120);
+    rButton = new Buttons(0, 0, 0, xR2, yR2, sR1);
+    rButton.display();
+    //OverRect();
   }
-  
-  OverRect();
+   if(xR1 - sR/2 > xR2 - sR1/2 && 
+     xR1 + sR/2 < xR2 + sR1/2 && 
+     yR1 - sR/2 > yR2 - sR1/2 && 
+     yR1 + sR/2 < yR2 + sR1/2){
+       overBox = true;
+       locked = true;
+       //OverRect();
+     }else {
+       overBox = false;
+       locked = false;
+     }
 }
 
 void mouseClicked(){
@@ -57,12 +84,23 @@ void mouseClicked(){
 }
 
 void OverRect(){
-  //if(mouseX > rectX && 
-  //   mouseX < rectX + rectWidth && 
-  //   mouseY > rectY && 
-  //   mouseY < rectY+ rectHeight){
-  //     bgColor = color(0, 200, 100);
-  //   }else{
-  //     bgColor = color(220, 20, 100);
-  //   }
+       background(bgColor);
+       ps.addParticle();
+       ps.run();
+}
+
+void mousePressed(){
+  xOffset = mouseX - xR1;
+  yOffset = mouseY - yR1;
+}
+
+void mouseDragged(){
+  if(locked){
+    xR1 = mouseX - xOffset;
+    yR1 = mouseY - yOffset;
+  }
+}
+
+void mouseReleased(){
+  locked = false;
 }
