@@ -18,6 +18,9 @@ String Quote3 = "I'm square4";
 
 float startTime, endTime;
 float totalTime = 1;
+float totalTime1 = 2;
+float totalTime2 = 3;
+float totalTime3 = 4;
 color normalColor, activeColor;
 boolean isActive = false;
 boolean isActive1 = false;
@@ -51,6 +54,9 @@ void setup(){
   normalColor = color(255);
   activeColor = color(0);
   totalTime *= 1000;
+  totalTime1 *= 1000;
+  totalTime2 *= 1000;
+  totalTime3 *= 1000;
 }
 
 void draw(){
@@ -115,17 +121,37 @@ void mouseClicked(){
   }  
 }
 
+//attempt the keyboard typing but somehow does not work....
+void keyTyped(){
+  if(keyCode == 'q'){
+  isActive = true;
+  startTime = millis();
+  }
+  if(keyCode == 'w'){
+  isActive1 = true;
+  startTime = millis();
+  }
+  if(keyCode == 'e'){
+  isActive2 = true;
+  startTime = millis();
+  }
+  if(keyCode == 'r'){
+  isActive3 = true;
+  startTime = millis();
+  }
+}
+
 void switchBackStartTime(){
   if(millis() - startTime > totalTime){
     isActive = false;
   }
-  if(millis() - startTime > totalTime){
+  if(millis() - startTime > totalTime1){
     isActive1 = false;
   }
-  if(millis() - startTime > totalTime){
+  if(millis() - startTime > totalTime2){
     isActive2 = false;
   }
-  if(millis() - startTime > totalTime){
+  if(millis() - startTime > totalTime3){
     isActive3 = false;
   }
 }
