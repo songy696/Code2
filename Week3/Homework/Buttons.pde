@@ -19,7 +19,9 @@ class Buttons{
   }
 
   void display(){
+    noStroke();
     ellipse(xCircle, yCircle, sizeCircle, sizeCircle);
+    rectMode(CENTER);
     rect(xRect, yRect, sizeRect, sizeRect);
   }
   
