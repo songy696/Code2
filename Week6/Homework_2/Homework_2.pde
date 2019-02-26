@@ -1,54 +1,61 @@
-final int N_SPRITES_X = 4;
-final int N_SPRITES_Y = 4;
-final int TOTAL_SPRITES = N_SPRITES_X * N_SPRITES_Y;
+Animal animal;
+Sleeping sleep;
+Happy happy;
+float xPos = 100;
+float yPos = 300/2;
+boolean go;
+boolean hap;
 
-int current_sprite = 0;
-int speed_x = 3;
-int pos_x = 0;
-int pos_y = 200;
-
-PImage [] my_sprites;
-
-void settings(){
-  size(displayWidth, displayHeight, P3D);
-}
-
-void setup(){
-  my_sprites = new PImage[TOTAL_SPRITES];
-  PImage my_sprite_sheet = loadImage("Cat walking_sprite.png");
+    
+void setup() {
+  size(1000, 300);
+  frameRate(4);
+  imageMode(CENTER);
   
-  int my_sprite_width = my_sprite_sheet.width / N_SPRITES_X;
-  int my_sprite_height = my_sprite_sheet.height / N_SPRITES_Y;
+  animal = new Animal(xPos, yPos);
+  sleep = new Sleeping(xPos, yPos);
+  happy = new Happy(xPos, yPos);
   
-  int index = 0;
+  hap = false;
+  go = false;
+} 
+ 
+void draw() { 
+  background(70);
   
+  if(go == true){
+    animal.display();
+    animal.update();
+  } else if(hap){
+    happy.display();
+    happy.update();
+  }else{
+    sleep.display();
+    sleep.update();
+  }
   
-  for(int y = 0; y < N_SPRITES_Y; y++){
-    for(int x = 0; x < N_SPRITES_X; x++){
-      my_sprites[index] = my_sprite_sheet.get(x * my_sprite_width, y * my_sprite_height,
-      my_sprite_width, my_sprite_height);
-      index++;
-    }
+ }
+ 
+void keyTyped(){
+  //if(key == CODED){
+  //  if(key == 'd'){
+  //    go = true;
+  //  }
+  //}
+  
+  switch(key){
+    
+  case 'd':
+  animal.display();
+  animal.update();
+  go = true;
+  break;
   }
 }
 
-void draw(){
-  background(0);
-  move_the_sprite();
-  display_the_sprite();
+void mouseClicked(){
+  if(dist(mouseX, mouseY, xPos, yPos) < sleep.x){
+    hap = !hap;
+  }
 }
-
-void move_the_sprite(){
-  
-}
-
-void display_the_sprite(){
-  pushMatrix();
-  translate(pos_x, pos_y, 0);
-  image(my_sprites[current_sprite],0,0);
-  popMatrix();
-}
-
-void mousePressed(){
-  exit();
-}
+ 
