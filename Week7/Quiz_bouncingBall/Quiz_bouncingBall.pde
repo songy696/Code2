@@ -7,9 +7,10 @@ boolean isCaught = false;
 void setup(){
   size(600, 600);
   noStroke();
+  rectMode(CENTER);
   pos = new PVector(width/2, height - 30);
-  vel = new PVector(0, 0);
-  acc = new PVector(0, 0);
+  vel = new PVector(1.5, 2.1);
+  //acc = new PVector(0, 0);
 }
 
 void draw(){
@@ -19,19 +20,27 @@ void draw(){
     isCaught = true;
   }
   
-  if(pos.x > width - ballW/2 || pos.x < ballW/2){
+  if((pos.x > width - ballW/2) || (pos.x < ballW/2)){
     vel.x *= -1;
   }
-  if(pos.y > height - ballH/2){
-    vel.y *= -1;
+  if(pos.y > height - ballW/2){
+    vel.y *= -0.95;
+    pos.y = height - ballW/2;
   }
   
+  if (mousePressed) {
+    if ((mouseX > (pos.x - 20) && mouseX < (pos.x + 20)) &&
+        (mouseY > (pos.y - 20) && mouseY < (pos.y + 20))) {
+      vel.x = mouseX - pmouseX;
+      vel.y = mouseY - pmouseY;
+    }
+  }
   
   fill(255, 120, 100);
   ellipse(pos.x, pos.y, ballW, ballH);
   pos.add(vel);
-  vel.add(acc);
-  acc.add(gravity);
+  //vel.add(acc);
+  vel.add(gravity);
   
 }
 
