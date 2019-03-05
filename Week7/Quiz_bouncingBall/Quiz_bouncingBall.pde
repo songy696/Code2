@@ -3,13 +3,14 @@ float ballW = 60;
 float ballH = 60;
 PVector gravity  = new PVector(0, 0.2);
 boolean isCaught = false;
+float friction = 0.9;
 
 void setup(){
   size(600, 600);
   noStroke();
   rectMode(CENTER);
   pos = new PVector(width/2, height - 30);
-  vel = new PVector(1.5, 2.1);
+  vel = new PVector(0, 2.1);
   //acc = new PVector(0, 0);
 }
 
@@ -21,16 +22,16 @@ void draw(){
   }
   
   if((pos.x > width - ballW/2) || (pos.x < ballW/2)){
-    vel.x *= -1;
+    vel.x *= -1 * friction;
   }
   if(pos.y > height - ballW/2){
-    vel.y *= -0.95;
+    vel.y *= -0.95 * friction;
     pos.y = height - ballW/2;
   }
   
   if (mousePressed) {
-    if ((mouseX > (pos.x - 20) && mouseX < (pos.x + 20)) &&
-        (mouseY > (pos.y - 20) && mouseY < (pos.y + 20))) {
+    if ((mouseX > (pos.x - ballW/2) && mouseX < (pos.x + ballW/2)) &&
+        (mouseY > (pos.y - ballW/2) && mouseY < (pos.y + ballW/2))) {
       vel.x = mouseX - pmouseX;
       vel.y = mouseY - pmouseY;
     }
