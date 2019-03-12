@@ -4,17 +4,34 @@ float barW;
 float turtSpeed =3;
 int turtArrayPosiion = 0;
 float hitDetection;
+float xpos =1;
+float speed = 2;
+float ypos;
 
 void setup() {
-  size(800,600);
-  
+  size(900,600);
+  noStroke();
+  barW = width/values.length;
 }
 
 
 void draw() {
+  background(255,127,80);
   
-for (int x = 0; x < values.length; x = x + 1) {
-    rect (x, height,30, values[x]*100);
+  if(xpos > width - 10){
+    xpos = 10;
   }
+  
+  fill(152,251,152);
+  for (int i = 0; i < values.length; i++) {
+    rect (i * barW, 0, barW, values[i]*height);
+  }
+ 
+  fill(0);
+  ellipse(xpos, ypos, 20,20);
+  xpos += speed;
+  ypos = values.length;
+  
+ 
 
 }
