@@ -28,12 +28,12 @@ class Cat {
 
   // Setup Walk Animation
   int numWalkFrames = 8;
-  int walkAnimationSpeed = 6;
+  int walkAnimationSpeed = 5;
   PImage[] walk = new PImage[numWalkFrames];
   
   // Setup Sleep Animation
   int numSleepFrames = 7;
-  int sleepAnimationSpeed = 6;
+  int sleepAnimationSpeed = 4;
   PImage[] sleep = new PImage[numSleepFrames];
 
   //standing
