@@ -9,10 +9,10 @@ class Cat {
   String[] stateNames = {"STAND", "WALK", "HAPPY", "SLEEP"};
   float[][] choices = {
     // "Walk","Happy","Sleep"
-    { 0.5, 0.2, 0.2, 0.1}, 
-    { 0.2, 0.3, 0.4, 0.1}, 
-    { 0.05, 0.5, 0.4, 0.05}, 
-    { 0.6, 0.3, 0.05, 0.05}, 
+    { 0.1, 0.3, 0.2, 0.4}, 
+    { 0.2, 0.5, 0.4, 0.2}, 
+    { 0.1, 0.3, 0.1, 0.4}, 
+    { 0.2, 0.1, 0.2, 0.5}, 
   };
 
   // movement variables
@@ -23,17 +23,17 @@ class Cat {
 
   // Setup Happy Animation
   int numHappyFrames = 3;
-  int happyAnimationSpeed = 8;
+  int happyAnimationSpeed = 10;
   PImage[] happy = new PImage[numHappyFrames];
 
   // Setup Walk Animation
   int numWalkFrames = 8;
-  int walkAnimationSpeed = 5;
+  int walkAnimationSpeed = 9;
   PImage[] walk = new PImage[numWalkFrames];
   
   // Setup Sleep Animation
   int numSleepFrames = 7;
-  int sleepAnimationSpeed = 4;
+  int sleepAnimationSpeed = 8;
   PImage[] sleep = new PImage[numSleepFrames];
 
   //standing
