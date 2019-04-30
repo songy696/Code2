@@ -10,9 +10,9 @@ class Cat {
   float[][] choices = {
     // "Walk","Happy","Sleep"
     { 0.1, 0.3, 0.2, 0.4}, 
-    { 0.2, 0.5, 0.4, 0.2}, 
-    { 0.1, 0.3, 0.1, 0.4}, 
-    { 0.2, 0.1, 0.2, 0.5}, 
+    { 0.1, 0.6, 0.4, 0.2}, 
+    { 0.1, 0.3, 0.2, 0.4}, 
+    { 0.1, 0.2, 0.2, 0.5}, 
   };
 
   // movement variables
@@ -190,7 +190,9 @@ class Cat {
     float rand = random(1);
     float currentTotal = 0;
     float[] range = choices[STATE];
-    for (int i = 0; i<range.length; i++) {
+    
+    //i = stateToSwitchTo
+    for (int i = 0; i<range.length*1.5; i++) {
       // cycle through every range value
       currentTotal += range[i];
       if (rand < currentTotal) {
