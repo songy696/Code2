@@ -1,10 +1,21 @@
-//
-//create grid class
-//create lines to form a check board
-//create cells using arraylists
-//make each cells clickable
-//assign bombs at random spots
-//when you click the cell, reveal the cell
-//counts the neighbor cells
-//if 0 is clicked the neighbor 0 cells are also reveal
-//
+/*
+-> cell class
+    -> set x and y and width of the cell
+    -> int that counts neighbor cells
+    -> boolean bomb;
+    -> boolean reveal;
+    
+    -> display:
+      -> if clicked = reveals
+      -> if it is a bomb = reveal everything + reveal bombs
+      -> if not bomb = just cell & neighbor counts
+      
+-> assign columns and rows
+-> set the size of the grid
+-> place bombs at random spots
+
+-> mousePressed() //mouseX & mouseY
+-> if press bomb = game ends
+-> if press cell = reveal
+
+*/
